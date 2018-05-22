@@ -156,18 +156,18 @@ scraperesults <- eventReactive(input$submit, {
                         '_username'  = input$username,
                         '_password'  = input$password)
     
- #  gotin <- cabi %>% submit_form(login) %>% 
- #    jump_to("https://secure.capitalbikeshare.com/profile/trips/YR5RUVKF-1?pageNumber=1") 
-    
     gotin <- cabi %>% submit_form(login) 
     
     validate(
       need(gotin$url == "https://secure.capitalbikeshare.com/profile/",
            "connection failed"))
-    #ok <- gotin %>% jump_to(urls) %>% read_html()
+
+    #   This section finds the last page of rides to give the length of the vector of urls to loop through
     
- #   url_base = "https://secure.capitalbikeshare.com/profile/trips/YR5RUVKF-1?pageNumber="
- #   
+ #   url_base <- paste0("https://secure.capitalbikeshare.com", gotin %>% 
+ #                     html_node(".ed-profile-menu__link_trips a") %>% 
+#                       html_attr("href"))
+
  #   last_page_html <- gotin %>% 
  #     follow_link("Oldest")
  #   
@@ -176,18 +176,9 @@ scraperesults <- eventReactive(input$submit, {
     
   #  l_out <- ifelse(input$checkbox == FALSE, as.numeric(last_page_number), 10)#as.numeric(last_page_number)  ## this needs to be set to the user's number of pages
     
-  #  urls <- paste0(url_base, seq(1, by = 1, length.out = l_out))
-    
-    gotin <- cabi %>% submit_form(login) 
-    #%>%   jump_to("https://secure.capitalbikeshare.com/profile/trips/YR5RUVKF-1?pageNumber=1") 
-    url_base = "https://secure.capitalbikeshare.com/profile/trips/YR5RUVKF-1/print?edTripsPrint%5BstartDate%5D=01%2F01%2F"
-    
-    urls <- paste0(url_base, seq.int(from = 2010, to = as.integer(format(Sys.Date(), "%Y")), by = 1),
-                   "&edTripsPrint%5BendDate%5D=01%2F02%2F", seq.int(from = 2011, to = as.integer(format(Sys.Date(), "%Y"))+1, by = 1))
     
     results<- data.frame()  
-   # results<-data.frame()  
-    
+
   #  withProgress(message = 'Gathering Your Rides', value = 0, {
       # Number of times we'll go through the loop
      # n <- l_out
