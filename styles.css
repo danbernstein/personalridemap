@@ -1,0 +1,46 @@
+.mytitle {
+  font-weight: 800;
+  font-size: 40px;
+  padding: 20px;
+  border-bottom: solid;
+  border-top: solid;
+  margin: 20px;
+  text-transform: lowercase;
+  font-family: "Myra", sans-serif;
+  text-align: center;
+}
+
+
+.sidebar {
+  padding: 10px 40px;
+  background-color: #DCDCDC;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#plot {
+ /* border: dotted; */
+  align-content: center;
+}
+
+h5 {
+  align-content: space-around;
+  width: 600;
+  height: 700;
+}
+
+h3 {
+  align-content: center;
+  text-align: justify;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.shiny-input-container {
+  text-align: center;
+}
+
+.button-align {
+  display: flex; justify-content: space-around;
+}
